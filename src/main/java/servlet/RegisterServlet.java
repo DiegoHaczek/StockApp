@@ -1,4 +1,4 @@
-package controller;
+package servlet;
 
 //import dao.UserDao;
 import dao.UserDao;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
 @WebServlet(name = "register", value = "/register")
-public class ServletRegister extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     private final UserDao userDao = new UserDao(new DbClient());
 

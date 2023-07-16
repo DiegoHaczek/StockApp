@@ -1,17 +1,20 @@
 package model;
 
+import java.math.BigDecimal;
+
 public class Product {
 
-    private Long id;
-    private Long userId;
+    private int id;
+    private int userId;
     private String category;
     private String brand;
     private String name;
     private Integer stock;
-    private double price;
+    private BigDecimal price;
 
-    public Product(Long id, Long userId, String category,
-                   String brand, String name, Integer stock, double price) {
+    public Product(){};
+    public Product(int id, int userId, String category,
+                   String brand, String name, Integer stock, BigDecimal price) {
         this.id = id;
         this.userId = userId;
         this.category = category;
@@ -21,8 +24,8 @@ public class Product {
         this.price = price;
     }
 
-    public Product(Long userId, String category,
-                   String brand, String name, Integer stock, double price) {
+    public Product(int userId, String category,
+                   String brand, String name, Integer stock, BigDecimal price) {
         this.userId = userId;
         this.category = category;
         this.brand = brand;
@@ -31,19 +34,19 @@ public class Product {
         this.price = price;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
@@ -79,11 +82,24 @@ public class Product {
         this.stock = stock;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", category='" + category + '\'' +
+                ", brand='" + brand + '\'' +
+                ", name='" + name + '\'' +
+                ", stock=" + stock +
+                ", price=" + price +
+                '}';
     }
 }

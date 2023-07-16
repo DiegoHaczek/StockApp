@@ -1,3 +1,6 @@
+<%@ page import="model.Product" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.Objects" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <jsp:include page="head.jsp"/>
@@ -20,18 +23,24 @@
     </thead>
 
     <tbody style="line-height: 2.5em;">
-    <tr>
-      <td>101</td>
-      <td>Ropa Deportiva</td>
-      <td>Nike</td>
-      <td>Zapatillas Shox</td>
-      <td>87</td>
-      <td>$1500</td>
-      <td>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Drop</button>
-      </td>
-    </tr>
+
+    <% List<Product> products = (List<Product>) request.getSession().getAttribute("user-products");
+        if(!Objects.isNull(products)) {
+        for(Product product : products){ %>
+          <tr>
+            <td><%=product.getId()%></td>
+            <td><%=product.getCategory()%></td>
+            <td><%=product.getBrand()%></td>
+            <td><%=product.getName()%></td>
+            <td><%=product.getStock()%></td>
+            <td><%=product.getPrice()%></td>
+            <td>
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-danger">Drop</button>
+            </td>
+          </tr>
+
+       <%}}%>
     </tbody>
   </table>
   <button class="btn btn-success" data-bs-toggle="modal"
