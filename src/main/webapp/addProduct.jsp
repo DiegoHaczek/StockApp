@@ -9,8 +9,6 @@
 
                 <form novalidate action="add-product" method="POST" class="m-3" id="form">
 
-                    <!--<input type="hidden" id="id" name="id" value="<%=session.getAttribute("user-id")%>">-->
-
                     <div class="form-floating mt-2">
                         <input type="text" id="category" class="form-control" name="category" placeholder="Place category here" required>
                         <label for="category" class="form-label">Category</label>

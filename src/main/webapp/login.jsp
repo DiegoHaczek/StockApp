@@ -1,7 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% if(session.getAttribute("user-id") != null){
-    response.sendRedirect("index.jsp");
-} %>
+
+<c:if test="${not empty sessionScope['user-id']}">
+    <c:redirect url="index.jsp" />
+</c:if>
+
 <html>
 <jsp:include page="head.jsp"/>
 <body>

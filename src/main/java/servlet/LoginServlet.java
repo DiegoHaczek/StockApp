@@ -1,6 +1,5 @@
 package servlet;
 
-//import dao.UserDao;
 import dao.ProductDao;
 import dao.UserDao;
 import jakarta.servlet.http.HttpSession;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import model.User;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -40,7 +38,8 @@ public class LoginServlet extends HttpServlet {
         session.setAttribute("user-id",user.getId());
         session.setAttribute("user-products",productDao.getAllByUser(user.getId()));
 
-        response.sendRedirect("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
     }
 
     private static void refreshPageWithErrorMessage(HttpServletRequest request, HttpServletResponse response, String errorMessage)

@@ -5,12 +5,8 @@ forms.forEach(form => {
         if (!form.checkValidity()) {
             e.preventDefault();
         }
-
         form.classList.add('was-validated');
     });
 });
-
-
-
 
 

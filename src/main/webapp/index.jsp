@@ -1,11 +1,9 @@
-<%@ page import="model.Product" %>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.Objects" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<% if(session.getAttribute("user-id") == null){
-  response.sendRedirect("login.jsp");
-} %>
+<c:if test="${empty sessionScope['user-id']}">
+  <c:redirect url="login.jsp" />
+</c:if>
 
 <html>
 <jsp:include page="head.jsp"/>
@@ -29,34 +27,33 @@
 
     <tbody style="line-height: 2.5em;">
 
-    <% List<Product> products = (List<Product>) request.getSession().getAttribute("user-products");
-        if(!Objects.isNull(products)) {
-        for(Product product : products){ %>
-          <tr>
-            <td><%=product.getId()%></td>
-            <td><%=product.getCategory()%></td>
-            <td><%=product.getBrand()%></td>
-            <td><%=product.getName()%></td>
-            <td><%=product.getStock()%></td>
-            <td>$ <%=product.getPrice()%></td>
-            <td style="width: 9em">
-              <button class="btn btn-primary" data-bs-toggle="modal"
-                      data-bs-target="#edit-modal"
-                      data-product-id="<%=product.getId()%>"
-                      data-product-category="<%=product.getCategory()%>"
-                      data-product-brand="<%=product.getBrand()%>"
-                      data-product-name="<%=product.getName()%>"
-                      data-product-stock="<%=product.getStock()%>"
-                      data-product-price="<%=product.getPrice()%>"
-              >Edit</button>
-              <form class="d-inline" action="delete-product" method="post">
-                <input type="hidden" name="product-id" value="<%=product.getId()%>">
-                <button type="submit" class="btn btn-danger">Drop</button>
-              </form>
-            </td>
-          </tr>
+    <c:forEach var="product" items="${sessionScope['user-products']}">
+      <tr>
+        <td>${product.id}</td>
+        <td>${product.category}</td>
+        <td>${product.brand}</td>
+        <td>${product.name}</td>
+        <td>${product.stock}</td>
+        <td>$ ${product.price}</td>
+        <td style="width: 9em">
+          <button class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#edit-modal"
+                  data-product-id="${product.id}"
+                  data-product-category="${product.category}"
+                  data-product-brand="${product.brand}"
+                  data-product-name="${product.name}"
+                  data-product-stock="${product.stock}"
+                  data-product-price="${product.price}"
+          >Edit</button>
+          <form class="d-inline" action="delete-product" method="post">
+            <input type="hidden" name="product-id" value="${product.id}">
+            <button type="submit" class="btn btn-danger">Drop</button>
+          </form>
+        </td>
+      </tr>
+    </c:forEach>
 
-       <%}}%>
+
     </tbody>
   </table>
   <button class="btn btn-success" data-bs-toggle="modal"
