@@ -2,7 +2,7 @@
 <header>
     <nav class="navbar navbar-expand navbar-dark bg-dark p-3">
         <div class="container d-flex">
-            <a href="index.jsp" class="navbar-brand">Brand</a>
+            <a href="index.jsp" class="navbar-brand">StockApp</a>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="#" class="nav-link">Products</a>

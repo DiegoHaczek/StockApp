@@ -28,6 +28,10 @@ public class ProductDao {
 
     private final String DELETE_PRODUCT = "delete from PRODUCT where ID = %d";
 
+    private final String EDIT_PRODUCT = "update PRODUCT" +
+            " set NAME = '%s', CATEGORY = '%s', BRAND = '%s', STOCK = %d, PRICE =%s " +
+            " where ID = %d;";
+
     private final String DROP_TABLE = "drop table PRODUCT";
 
     private final DbClient dbClient;
@@ -56,6 +60,16 @@ public class ProductDao {
 
     public void delete (int productId) {
         dbClient.run(String.format(DELETE_PRODUCT,productId));
+    }
+
+    public void edit (Product product) {
+        dbClient.run(String.format(EDIT_PRODUCT,
+                product.getName(),
+                product.getCategory(),
+                product.getBrand(),
+                product.getStock(),
+                product.getPrice(),
+                product.getId()));
     }
 
     public Product mapProductFromQuery(Map<String,Object> queryResult) {
