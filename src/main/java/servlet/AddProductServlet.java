@@ -23,9 +23,11 @@ public class AddProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        int userId = (Integer) session.getAttribute("user-id");
 
         Product product = new Product();
-        product.setUserId(1);
+        product.setUserId(userId);
         product.setBrand(request.getParameter("brand"));
         product.setCategory(request.getParameter("category"));
         product.setName(request.getParameter("name"));
@@ -34,8 +36,7 @@ public class AddProductServlet extends HttpServlet {
 
         productDao.save(product);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("user-products",productDao.getAll());
+        session.setAttribute("user-products",productDao.getAllByUser(userId));
         //System.out.println(product);
         response.sendRedirect("index.jsp");
 

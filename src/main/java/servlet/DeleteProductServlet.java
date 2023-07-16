@@ -19,12 +19,13 @@ public class DeleteProductServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        int userId = (Integer) session.getAttribute("user-id");
 
         int productId = Integer.parseInt(request.getParameter("product-id"));
         productDao.delete(productId);
 
-        HttpSession session = request.getSession();
-        session.setAttribute("user-products",productDao.getAll());
+        session.setAttribute("user-products",productDao.getAllByUser(userId));
         response.sendRedirect("index.jsp");
 
     }

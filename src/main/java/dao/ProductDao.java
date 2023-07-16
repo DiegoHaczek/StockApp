@@ -26,6 +26,8 @@ public class ProductDao {
 
     private final String SELECT_ALL = "select * from PRODUCT";
 
+    private final String SELECT_ALL_BY_USER = "select * from PRODUCT where USER_ID = %s ;";
+
     private final String DELETE_PRODUCT = "delete from PRODUCT where ID = %d";
 
     private final String EDIT_PRODUCT = "update PRODUCT" +
@@ -51,8 +53,8 @@ public class ProductDao {
                 product.getPrice()));
     }
 
-    public List<Product> getAll() {
-        return dbClient.selectAll(SELECT_ALL)
+    public List<Product> getAllByUser(int userId) {
+        return dbClient.selectAll(String.format(SELECT_ALL_BY_USER, userId))
                 .stream()
                 .map(this::mapProductFromQuery)
                 .collect(Collectors.toList());

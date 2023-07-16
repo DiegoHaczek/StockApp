@@ -27,12 +27,12 @@
           </div>
 
           <div class="form-floating mt-3">
-            <input type="number" id="edit-stock" class="form-control" name="stock" placeholder="Place stock here">
+            <input type="number" id="edit-stock" class="form-control" name="stock" placeholder="Place stock here" required>
             <label for="edit-stock" class="form-label">Stock</label>
           </div>
 
           <div class="form-floating mt-3">
-            <input type="number" id="edit-price" class="form-control" name="price" placeholder="Place price here">
+            <input type="number" id="edit-price" class="form-control" name="price" placeholder="Place price here" required>
             <label for="edit-price" class="form-label">Price</label>
           </div>
 

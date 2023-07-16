@@ -17,11 +17,13 @@
                     <div class="form-floating mt-3">
                         <input type="text" id="name" name="name" class="form-control" placeholder="Place password here" required>
                         <label for="name" class="form-label">Name</label>
+                        <div class="invalid-feedback">Name is required</div>
                     </div>
 
                     <div class="form-floating mt-3">
                         <input type="text" id="surname" name="surname" class="form-control" placeholder="Place password here" required>
                         <label for="surname" class="form-label">Surname</label>
+                        <div class="invalid-feedback">Surname is required</div>
                     </div>
 
                     <div class="form-floating mt-3">
@@ -31,13 +33,13 @@
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="password" id="password"  name="password"class="form-control" placeholder="Place password here" minlength="8">
+                        <input type="password" id="password"  name="password"class="form-control" placeholder="Place password here" required minlength="8">
                         <label for="password" class="form-label">Password</label>
                         <div class="invalid-feedback">Password minimum length is 8 characters</div>
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="password" id="password2" name="password2" class="form-control" placeholder="Place password here" minlength="8">
+                        <input type="password" id="password2" name="password2" class="form-control" placeholder="Place password here" required minlength="8">
                         <label for="password2" class="form-label">Repeat Password</label>
                         <div class="invalid-feedback">Password minimum length is 8 characters</div>
                     </div>

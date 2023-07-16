@@ -1,9 +1,16 @@
-const form = document.querySelector("form")
+const forms = document.querySelectorAll("form");
 
-form.addEventListener('submit', e => {
-    if (!form.checkValidity()){
-        e.preventDefault()
-    }
+forms.forEach(form => {
+    form.addEventListener('submit', e => {
+        if (!form.checkValidity()) {
+            e.preventDefault();
+        }
 
-    form.classList.add('was-validated')
-})
+        form.classList.add('was-validated');
+    });
+});
+
+
+
+
+

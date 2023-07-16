@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("user-id",user.getId());
-        session.setAttribute("user-products",productDao.getAll());
+        session.setAttribute("user-products",productDao.getAllByUser(user.getId()));
 
         response.sendRedirect("index.jsp");
     }
