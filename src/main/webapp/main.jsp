@@ -34,9 +34,13 @@
             <td><%=product.getName()%></td>
             <td><%=product.getStock()%></td>
             <td><%=product.getPrice()%></td>
-            <td>
-              <button class="btn btn-primary">Edit</button>
-              <button class="btn btn-danger">Drop</button>
+            <td style="width: 9em">
+              <button class="btn btn-primary" data-bs-toggle="modal"
+                      data-bs-target="#edit-modal">Edit</button>
+              <form class="d-inline" action="delete-product" method="post">
+                <input type="hidden" name="product-id" value="<%=product.getId()%>">
+                <button type="submit" class="btn btn-danger">Drop</button>
+              </form>
             </td>
           </tr>
 
@@ -47,6 +51,7 @@
           data-bs-target="#modal">Add Product</button>
 
   <jsp:include page="addProduct.jsp"/>
+  <jsp:include page="editProduct.jsp"/>
 
 </div>
 

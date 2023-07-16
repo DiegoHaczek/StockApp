@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         if(!userDao.existsByEmail(request.getParameter("email"))){
-            refreshPageWithErrorMessage(request,  response, "Account doesn't exists");
+            refreshPageWithErrorMessage(request, response, "Account doesn't exists");
         }
         User user = userDao.findByEmail(request.getParameter("email"));
 

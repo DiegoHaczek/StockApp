@@ -15,22 +15,22 @@
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="text" id="brand" class="form-control" name="brand" placeholder="Place password here" required>
+                        <input type="text" id="brand" class="form-control" name="brand" placeholder="Place brand here" required>
                         <label for="brand" class="form-label">Brand</label>
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="text" id="name" class="form-control" name="name" placeholder="Place email here" required>
+                        <input type="text" id="name" class="form-control" name="name" placeholder="Place name here" required>
                         <label for="name" class="form-label">Name</label>
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="number" id="stock" class="form-control" name="stock" placeholder="Place password here" required>
+                        <input type="number" id="stock" class="form-control" name="stock" placeholder="Place stock here" required>
                         <label for="stock" class="form-label">Stock</label>
                     </div>
 
                     <div class="form-floating mt-3">
-                        <input type="number" id="price" class="form-control" name="price" placeholder="Place password here" required>
+                        <input type="number" id="price" class="form-control" name="price" placeholder="Place price here" required>
                         <label for="price" class="form-label">Price</label>
                     </div>
 
@@ -40,7 +40,6 @@
                 </form>
 
             </div>
-
         </div>
     </div>
 </div>
