@@ -34,7 +34,10 @@
     </tr>
     </tbody>
   </table>
-  <button class="btn btn-success">Add Product</button>
+  <button class="btn btn-success" data-bs-toggle="modal"
+          data-bs-target="#modal">Add Product</button>
+
+  <jsp:include page="addProduct.jsp"/>
 
 </div>
 

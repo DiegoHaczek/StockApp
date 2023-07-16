@@ -24,20 +24,25 @@ public class ServletLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
     if(!userDao.existsByEmail(request.getParameter("email"))){
-        request.setAttribute("errorMessage","Account doesn't exists");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request,response);
+        refreshPageWithErrorMessage(request,  response,
+                "Account doesn't exists");
     }
 
     User user = userDao.findByEmail(request.getParameter("email"));
 
     if (!Objects.equals(user.getPassword(), request.getParameter("password"))) {
-        request.setAttribute("errorMessage","Incorrect Password");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request,response);
+        refreshPageWithErrorMessage(request, response,
+                "Wrong Password");
     }
 
-    RequestDispatcher dispatcher = request.getRequestDispatcher("showProducts.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
     dispatcher.forward(request,response);
+    }
+
+    private static void refreshPageWithErrorMessage(HttpServletRequest request, HttpServletResponse response, String errorMessage)
+            throws ServletException, IOException {
+        request.setAttribute("errorMessage", errorMessage);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        dispatcher.forward(request, response);
     }
 }
