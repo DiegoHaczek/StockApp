@@ -36,7 +36,14 @@
             <td><%=product.getPrice()%></td>
             <td style="width: 9em">
               <button class="btn btn-primary" data-bs-toggle="modal"
-                      data-bs-target="#edit-modal">Edit</button>
+                      data-bs-target="#edit-modal"
+                      data-product-id="<%=product.getId()%>"
+                      data-product-category="<%=product.getCategory()%>"
+                      data-product-brand="<%=product.getBrand()%>"
+                      data-product-name="<%=product.getName()%>"
+                      data-product-stock="<%=product.getStock()%>"
+                      data-product-price="<%=product.getPrice()%>"
+              >Edit</button>
               <form class="d-inline" action="delete-product" method="post">
                 <input type="hidden" name="product-id" value="<%=product.getId()%>">
                 <button type="submit" class="btn btn-danger">Drop</button>
@@ -50,19 +57,15 @@
   <button class="btn btn-success" data-bs-toggle="modal"
           data-bs-target="#modal">Add Product</button>
 
-  <jsp:include page="addProduct.jsp"/>
   <jsp:include page="editProduct.jsp"/>
+  <jsp:include page="addProduct.jsp"/>
 
 </div>
 
 <jsp:include page="alert.jsp"/>
 
-<script>
-  if (!$("#alert").hasClass("")){
-    $("#alert").animate({bottom:"5%"},{duration:800}).delay(1000).animate({bottom:"-8%"},{duration:800});
-  }
-</script>
-
+<script src="static/scripts/animateAlarm.js"></script>
+<script src="static/scripts/populateEditForm.js"></script>
 <script src="static/scripts/validFormInputs.js"></script>
 
 </body>
