@@ -37,7 +37,7 @@ public class AddProductServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("user-products",productDao.getAll());
         //System.out.println(product);
-        response.sendRedirect("main.jsp");
+        response.sendRedirect("index.jsp");
 
     }
 }

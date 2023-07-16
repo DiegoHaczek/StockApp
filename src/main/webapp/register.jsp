@@ -1,11 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Diegote
-  Date: 13/7/2023
-  Time: 19:39
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<% if(session.getAttribute("user-id") != null){
+    response.sendRedirect("index.jsp");
+} %>
 <html>
 <jsp:include page="head.jsp"/>
 <body>
@@ -50,7 +46,7 @@
                         <button class="btn btn-primary mt-4 mb-2">Create Account</button>
                     </div>
                 </form>
-                <a href="index.jsp"><button class="btn btn-success mt-3">Go Back</button></a>
+                <a href="login.jsp"><button class="btn btn-success mt-3">Go Back</button></a>
 
             </div>
         </div>

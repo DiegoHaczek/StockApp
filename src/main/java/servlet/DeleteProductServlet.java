@@ -25,7 +25,7 @@ public class DeleteProductServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("user-products",productDao.getAll());
-        response.sendRedirect("main.jsp");
+        response.sendRedirect("index.jsp");
 
     }
 }

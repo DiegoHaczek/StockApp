@@ -51,6 +51,7 @@ public class UserDao{
 
     public User mapUserFromQuery(Map<String,Object> queryResult) {
         return new User(
+                (int) queryResult.get("ID"),
                 (String) queryResult.get("NAME"),
                 (String) queryResult.get("SURNAME"),
                 (String) queryResult.get("EMAIL"),

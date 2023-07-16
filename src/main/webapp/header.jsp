@@ -8,7 +8,7 @@
                     <a href="#" class="nav-link">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Log Out</a>
+                    <a href="logout" class="nav-link">Log Out</a>
                 </li>
             </ul>
         </div>

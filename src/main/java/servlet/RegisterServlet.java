@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
         System.out.println(user);
 
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("login.jsp");
         //HttpSession session = request.getSession();
         //session.setAttribute("userList", );
 

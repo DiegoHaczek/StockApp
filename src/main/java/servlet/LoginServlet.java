@@ -37,15 +37,16 @@ public class LoginServlet extends HttpServlet {
         }
 
         HttpSession session = request.getSession();
+        session.setAttribute("user-id",user.getId());
         session.setAttribute("user-products",productDao.getAll());
 
-        response.sendRedirect("main.jsp");
+        response.sendRedirect("index.jsp");
     }
 
     private static void refreshPageWithErrorMessage(HttpServletRequest request, HttpServletResponse response, String errorMessage)
             throws ServletException, IOException {
         request.setAttribute("errorMessage", errorMessage);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
         dispatcher.forward(request, response);
     }
 }
