@@ -32,42 +32,6 @@
         <button class="btn btn-danger">Drop</button>
       </td>
     </tr>
-    <tr>
-      <td>102</td>
-      <td>Ropa Deportiva</td>
-      <td>Adidas</td>
-      <td>Zapatillas Superstar</td>
-      <td>103</td>
-      <td>$1300</td>
-      <td>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Drop</button>
-      </td>
-    </tr>
-    <tr>
-      <td>103</td>
-      <td>Ropa Urbana</td>
-      <td>Levis</td>
-      <td>Jean 505</td>
-      <td>32</td>
-      <td>$2000</td>
-      <td>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Drop</button>
-      </td>
-    </tr>
-    <tr>
-      <td>104</td>
-      <td>Accesorios</td>
-      <td>Lacoste</td>
-      <td>Gorro Lana</td>
-      <td>23</td>
-      <td>$500</td>
-      <td>
-        <button class="btn btn-primary">Edit</button>
-        <button class="btn btn-danger">Drop</button>
-      </td>
-    </tr>
     </tbody>
   </table>
   <button class="btn btn-success">Add Product</button>

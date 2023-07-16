@@ -2,7 +2,9 @@ package controller;
 
 //import dao.UserDao;
 import dao.UserDao;
-import db.DbClient;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import persistence.DbClient;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,14 +15,18 @@ import java.io.IOException;
 
 
 @WebServlet(name = "register", value = "/register")
-public class RegisterController extends HttpServlet {
+public class ServletRegister extends HttpServlet {
 
     private final UserDao userDao = new UserDao(new DbClient());
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        userDao.existsByEmail(request.getParameter("email"));
+        if(userDao.existsByEmail(request.getParameter("email"))){
+            request.setAttribute("errorMessage","Already exists a user with the selected email");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("register.jsp");
+            dispatcher.forward(request,response);
+        }
 
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");

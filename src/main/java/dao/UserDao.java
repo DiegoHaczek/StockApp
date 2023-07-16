@@ -1,6 +1,6 @@
 package dao;
 
-import db.DbClient;
+import persistence.DbClient;
 import model.User;
 import java.util.Map;
 
@@ -33,13 +33,7 @@ public class UserDao{
 
     public User findByEmail(String email) {
        Map<String,Object> queryResult = dbClient.select(String.format(SELECT_BY_EMAIL,email));
-       return new User(
-               (String) queryResult.get("NAME"),
-               (String) queryResult.get("SURNAME"),
-               (String) queryResult.get("EMAIL"),
-               (String) queryResult.get("PASSWORD")
-       );
-
+       return mapUserFromQuery(queryResult);
     }
 
     public boolean existsByEmail(String email)  {
@@ -53,6 +47,15 @@ public class UserDao{
                 user.getSurname(),
                 user.getEmail(),
                 user.getPassword()));
+    }
+
+    public User mapUserFromQuery(Map<String,Object> queryResult) {
+        return new User(
+                (String) queryResult.get("NAME"),
+                (String) queryResult.get("SURNAME"),
+                (String) queryResult.get("EMAIL"),
+                (String) queryResult.get("PASSWORD")
+        );
     }
 
 }

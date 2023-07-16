@@ -1,7 +1,9 @@
-package db;
+package persistence;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DbClient {
@@ -35,6 +37,7 @@ public class DbClient {
         ) {
             ResultSetMetaData metaData = rs.getMetaData();
             int columnCount = metaData.getColumnCount();
+
             if (rs.next()) {
                 for (int i = 1; i <= columnCount; i++) {
                     String columnName = metaData.getColumnName(i);
@@ -45,9 +48,35 @@ public class DbClient {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return result;
     }
+
+    public List<Map<String, Object>> selectAll(String query) {
+        List<Map<String, Object>> resultList = new ArrayList<>();
+
+        try (Connection con = DriverManager.getConnection(DATABASE_URL);
+             Statement statement = con.createStatement();
+             ResultSet rs = statement.executeQuery(query)
+        ) {
+            ResultSetMetaData metaData = rs.getMetaData();
+            int columnCount = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Map<String, Object> row = new HashMap<>();
+                for (int i = 1; i <= columnCount; i++) {
+                    String columnName = metaData.getColumnName(i);
+                    Object value = rs.getObject(i);
+                    row.put(columnName, value);
+                }
+                resultList.add(row);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultList;
+    }
+
 
 
 }
