@@ -5,4 +5,12 @@
      <session-config>
          <tracking-mode>COOKIE</tracking-mode>
      </session-config>
+     <filter>
+         <filter-name>AuthorizationFilter</filter-name>
+         <filter-class>servlet.AuthorizationFilter</filter-class>
+     </filter>
+     <filter-mapping>
+         <filter-name>AuthorizationFilter</filter-name>
+         <url-pattern>/index.jsp</url-pattern>
+     </filter-mapping>
 </web-app>

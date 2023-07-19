@@ -27,19 +27,19 @@ public class LoginServlet extends HttpServlet {
 
         if(!userDao.existsByEmail(request.getParameter("email"))){
             refreshPageWithErrorMessage(request, response, "Account doesn't exists");
+            return;
         }
         User user = userDao.findByEmail(request.getParameter("email"));
 
         if (!Objects.equals(user.getPassword(), request.getParameter("password"))) {
             refreshPageWithErrorMessage(request, response, "Wrong Password");
+            return;
         }
 
         HttpSession session = request.getSession();
         session.setAttribute("user-id",user.getId());
         session.setAttribute("user-products",productDao.getAllByUser(user.getId()));
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("index.jsp");
     }
 
     private static void refreshPageWithErrorMessage(HttpServletRequest request, HttpServletResponse response, String errorMessage)

@@ -1,9 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<c:if test="${not empty sessionScope['user-id']}">
-    <c:redirect url="index.jsp" />
-</c:if>
 <html>
 <jsp:include page="head.jsp"/>
 <body>
@@ -57,6 +54,9 @@
 
     </div>
 
+<jsp:include page="alert.jsp"/>
+
+<script src="static/scripts/animateAlarm.js"></script>
 <script src="static/scripts/validFormInputs.js"></script>
 
 </body>
