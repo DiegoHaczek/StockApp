@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<jsp:include page="head.jsp"/>
+<jsp:include page="components/head.jspf"/>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="components/header.jspf"/>
 
 <div class="container">
 
@@ -54,12 +54,12 @@
   <button class="btn btn-success" data-bs-toggle="modal"
           data-bs-target="#modal">Add Product</button>
 
-  <jsp:include page="editProduct.jsp"/>
-  <jsp:include page="addProduct.jsp"/>
+  <jsp:include page="components/editProduct.jspf"/>
+  <jsp:include page="components/addProduct.jspf"/>
 
 </div>
 
-<jsp:include page="alert.jsp"/>
+<jsp:include page="components/alert.jsp"/>
 
 <script src="static/scripts/animateAlarm.js"></script>
 <script src="static/scripts/populateEditForm.js"></script>

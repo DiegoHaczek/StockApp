@@ -1,16 +1,23 @@
 package persistence;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@ApplicationScoped
 public class DbClient {
 
     public static String DATABASE_URL = "jdbc:h2:./src/main/java/db/stock_app;";
 
-    static {
+    public DbClient() {}
+
+    @PostConstruct
+    public void init() {
         try {
             Class.forName("org.h2.Driver");
         } catch (ClassNotFoundException e) {

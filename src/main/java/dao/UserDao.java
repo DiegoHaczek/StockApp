@@ -1,9 +1,12 @@
 package dao;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import persistence.DbClient;
 import model.User;
 import java.util.Map;
 
+@ApplicationScoped
 public class UserDao{
 
     private final String CREATE_TABLE = "create table if not exists `USER`(" +
@@ -18,18 +21,19 @@ public class UserDao{
 
     private final String SELECT_BY_EMAIL = "select * from `USER` where email = '%s' ;";
 
-
     private final String INSERT = "insert into `USER` (NAME, SURNAME, EMAIL, PASSWORD)" +
             " values ('%s', '%s', '%s', '%s');";
 
     private final String SELECT_ALL = "select * from `USER`";
 
-    private final DbClient dbClient;
+    private DbClient dbClient;
 
-    public UserDao(DbClient dbClient) {
+    @Inject
+    public UserDao(DbClient dbClient){
         this.dbClient = dbClient;
-        dbClient.run(CREATE_TABLE);
     }
+
+    public UserDao() {}
 
     public User findByEmail(String email) {
        Map<String,Object> queryResult = dbClient.select(String.format(SELECT_BY_EMAIL,email));

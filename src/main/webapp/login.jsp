@@ -1,9 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
-<jsp:include page="head.jsp"/>
+<jsp:include page="components/head.jspf"/>
 <body>
-<jsp:include page="header.jsp"/>
+<jsp:include page="components/header.jspf"/>
 
 <div class="container">
     <div class="card mt-5 w-50 m-auto">
@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<jsp:include page="alert.jsp"/>
+<jsp:include page="components/alert.jsp"/>
 
 <script src="static/scripts/animateAlarm.js"></script>
 <script src="static/scripts/validFormInputs.js"></script>

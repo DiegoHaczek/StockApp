@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<jsp:include page="head.jsp"/>
+<jsp:include page="components/head.jspf"/>
 <body>
-    <jsp:include page="header.jsp"/>
+    <jsp:include page="components/header.jspf"/>
 
     <div class="container">
 
@@ -54,7 +54,7 @@
 
     </div>
 
-<jsp:include page="alert.jsp"/>
+<jsp:include page="components/alert.jsp"/>
 
 <script src="static/scripts/animateAlarm.js"></script>
 <script src="static/scripts/validFormInputs.js"></script>

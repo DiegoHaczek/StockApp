@@ -1,5 +1,7 @@
 package dao;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import model.Product;
 import persistence.DbClient;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@ApplicationScoped
 public class ProductDao {
 
     private final String CREATE_TABLE = "create table if not exists PRODUCT(" +
@@ -36,12 +39,14 @@ public class ProductDao {
 
     private final String DROP_TABLE = "drop table PRODUCT";
 
-    private final DbClient dbClient;
+    private DbClient dbClient;
 
+    @Inject
     public ProductDao(DbClient dbClient) {
         this.dbClient = dbClient;
-        dbClient.run(CREATE_TABLE);
     }
+
+    public ProductDao() {}
 
     public void save(Product product) {
         dbClient.run(String.format(INSERT,

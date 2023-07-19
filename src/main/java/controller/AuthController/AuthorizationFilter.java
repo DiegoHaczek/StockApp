@@ -1,4 +1,4 @@
-package servlet;
+package controller.AuthController;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;

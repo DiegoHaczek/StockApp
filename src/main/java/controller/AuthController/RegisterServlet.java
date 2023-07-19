@@ -1,9 +1,9 @@
-package servlet;
+package controller.AuthController;
 
 import dao.UserDao;
+import jakarta.inject.Inject;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import persistence.DbClient;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +16,8 @@ import java.io.IOException;
 @WebServlet(name = "register", value = "/register")
 public class RegisterServlet extends HttpServlet {
 
-    private final UserDao userDao = new UserDao(new DbClient());
+    @Inject
+    private UserDao userDao;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
