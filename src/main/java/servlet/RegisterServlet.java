@@ -1,6 +1,5 @@
 package servlet;
 
-//import dao.UserDao;
 import dao.UserDao;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -40,9 +39,6 @@ public class RegisterServlet extends HttpServlet {
 
 
         response.sendRedirect("login.jsp");
-        //HttpSession session = request.getSession();
-        //session.setAttribute("userList", );
-
     }
 
 
